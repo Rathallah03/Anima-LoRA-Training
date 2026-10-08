@@ -92,14 +92,33 @@ Anima Base + Qwen + VAE
        LoRA .safetensors
 ```
 
+## Example Case Study
+
+This repository also includes a documented **Lilith character-LoRA case study** trained on Anima Base v1.0.
+
+The example contains:
+
+- a representative image/caption dataset subset
+- recovered training metadata and configuration notes
+- generated LoRA results
+- a Civitai release reference
+
+See [the Lilith character case study](examples/lilith-character/) for the full case study.
+
 ## Repository structure
 
 ```text
 Anima-LoRA-Training/
 ├── README.md
 ├── .gitignore
-└── notebooks/
-    └── training-lora-model-anima-base.ipynb
+├── notebooks/
+│   └── training-lora-model-anima-base.ipynb
+└── examples/
+    └── lilith-character/
+        ├── README.md
+        ├── training-notes.md
+        ├── dataset/
+        └── results/
 ```
 
 ## Notes
