@@ -1,47 +1,152 @@
 # Training Notes — Lilith Character LoRA
 
-## Experiment purpose
+## Experiment
 
-The Lilith LoRA was an earlier successful training experiment and served as a practical validation of the Anima LoRA training workflow.
+This case study records an earlier successful **Anima character-LoRA training experiment** for Lilith. The original training TOML/config files are no longer available, so the technical details below are reconstructed from the metadata embedded in the released LoRA file.
 
-## Dataset structure
+The metadata was inspected using a LoRA metadata viewer after the trained SafeTensors file had already been released.
 
-The dataset used image files paired with same-name text captions:
+## Training Configuration
+
+| Parameter | Recorded value |
+|---|---|
+| Base Model | `anima-base-v1.0.safetensors` (Anima) |
+| VAE | `qwen_image_vae.safetensors` |
+| Prediction Type | `epsilon` |
+| Training Module | `networks.lora_anima` |
+| Resolution | 1024 × 1024 |
+| Batch Size | 1 |
+| Gradient Accumulation Steps | 1 |
+| LoRA Dim / Alpha | 32 / 16 |
+| Network Dropout | None |
+| Learning Rate | 0.0001 |
+| Text Encoder LR | None |
+| UNet LR | None |
+| Optimizer | AdamW8bit |
+| Scheduler | cosine_with_restarts |
+| Weight Decay | 0.1 |
+| Betas | (0.9, 0.99) |
+| Warmup Steps | 100 |
+| SNR | None |
+| Noise Offset | 0.03 |
+| Pyramid Noise Iterations | None |
+| Epochs | 9 of 10 |
+| Training Steps | 1863 of 2070 |
+| Total Images | 59 |
+| Dataset Repeats | 7 |
+| Recorded Training Time | 4h 1m 17s |
+| Training Date | August 31, 2026 |
+
+### Network
+
+The metadata records:
 
 ```text
-image_001.png
-image_001.txt
-image_002.png
-image_002.txt
+Module: networks.lora_anima
+Dim / Alpha: 32 / 16
+Network Dropout: None
+```
+
+### Optimizer & Scheduler
+
+```text
+Optimizer: AdamW8bit
+Scheduler: cosine_with_restarts
+Learning Rate: 0.0001
+Weight Decay: 0.1
+Betas: (0.9, 0.99)
+Warmup Steps: 100
+```
+
+## Dataset
+
+The training metadata records:
+
+- **59 total images**
+- **7 repeats**
+- **2070 total planned steps**
+
+The repository contains only a small representative subset of the original dataset. The full source dataset is intentionally not redistributed here.
+
+Each training sample follows the image + same-name caption format:
+
+```text
+lilith_001_original.png
+lilith_001_original.txt
+
+lilith_032_original.jpg
+lilith_032_original.txt
+
 ...
 ```
 
-The original dataset remains local/private and is not redistributed here.
+## Trigger Words
 
-## Validation flow
+The released LoRA metadata contains two character triggers:
 
-1. Prepare character images.
-2. Create matching captions.
-3. Train a character LoRA using Anima.
-4. Test the resulting LoRA locally.
-5. Iterate/check the output.
-6. Publish the successful result to Civitai.
+```text
+lilith_default
+lilith_fantasy
+```
 
-## Repository role
+The metadata also records character/appearance tags associated with the two variants.
 
-This case study is kept separate from the reproducible Kaggle notebook so the repository contains both:
+### Default variant
 
-- a **reproducible training pipeline**, and
-- a **real-world training example** showing that the workflow has been successfully used.
+The recorded trigger is:
 
-## Planned evidence
+```text
+lilith_default
+```
 
-The following can be added later:
+with attributes including white hair, very long hair, red eyes, black ribbons, white shirt, black skirt, and related outfit details.
 
-- training configuration / hyperparameters
-- dataset statistics
-- representative dataset samples (only where redistribution is permitted)
-- generated validation samples
-- training screenshots
-- model/release link supplied by the author
-- notes on what worked and what was changed during experimentation
+### Fantasy variant
+
+The recorded trigger is:
+
+```text
+lilith_fantasy
+```
+
+with attributes including white hair, very long hair, red eyes, pointed/black crown, cape, breastplate, white skirt, high heel boots, sword, and related fantasy outfit details.
+
+## Training Result
+
+The training completed to **epoch 9 of 10**, with **1863 of 2070 steps** recorded in the embedded metadata.
+
+The resulting LoRA was tested with local inference and produced recognizable Lilith outputs across both the default and fantasy variants. Representative generated outputs are available in the `results/` directory.
+
+## Release
+
+The trained model was subsequently published on Civitai:
+
+urlLilith (2 Outfits) — The NOexistenceN of you AND me [Anima]https://civitai.com/models/2904771/lilith-2-outfits-the-noexistencen-of-you-and-me-anima
+
+## Important Documentation Note
+
+The values above describe the **earlier Lilith experiment**. They should not be confused with the configuration of the newer Kaggle training notebook in this repository.
+
+The Kaggle notebook represents a later, more structured and reproducible training pipeline. The Lilith experiment is included as a real-world validation case showing that the underlying Anima LoRA training workflow was successfully used before the current pipeline was organized.
+
+## Evidence Chain
+
+```text
+59-image dataset
+      ↓
+Image + caption pairs
+      ↓
+Anima Base v1.0
+      ↓
+LoRA training
+      ↓
+1863 / 2070 recorded steps
+      ↓
+Local inference validation
+      ↓
+Multiple generated results
+      ↓
+Civitai publication
+```
+
+> **Source of training parameters:** embedded metadata recovered from the released LoRA file. The original TOML/config files are no longer available, so undocumented parameters are intentionally not inferred.
