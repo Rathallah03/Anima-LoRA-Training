@@ -1,0 +1,7 @@
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+/kaggle/
+__pycache__/
+.ipynb_checkpoints/
