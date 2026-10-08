@@ -5,7 +5,7 @@ This directory documents an earlier successful **Anima character-LoRA training e
 ## Overview
 
 - **Character:** Lilith
-- **Source:** *The NOexistenceN of you AND me* / related NOexistenceN works
+- **Source:** *The NOexistenceN of you AND me* / *The NOexistenceN of Morphean Paradox*
 - **Training type:** Character LoRA
 - **Base model:** Anima
 - **Dataset format:** Image + same-name `.txt` caption sidecar
