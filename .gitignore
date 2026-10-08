@@ -5,3 +5,7 @@
 /kaggle/
 __pycache__/
 .ipynb_checkpoints/
+.env
+*.env
+config.json
+secrets.ini
