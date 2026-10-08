@@ -121,7 +121,7 @@ The resulting LoRA was tested with local inference and produced recognizable Lil
 
 The trained model was subsequently published on Civitai:
 
-urlLilith (2 Outfits) — The NOexistenceN of you AND me [Anima]https://civitai.com/models/2904771/lilith-2-outfits-the-noexistencen-of-you-and-me-anima
+[Lilith (2 Outfits) — The NOexistenceN of you AND me [Anima]](https://civitai.com/models/2904771/lilith-2-outfits-the-noexistencen-of-you-and-me-anima)
 
 ## Important Documentation Note
 
