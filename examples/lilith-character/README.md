@@ -69,5 +69,3 @@ These samples demonstrate the practical result of the training process across di
 This experiment demonstrates that the training workflow is not only theoretical or notebook-based: it was previously used to produce a working character LoRA from a real image/caption dataset.
 
 The accompanying `training-notes.md` records the experiment and can be expanded with training parameters, validation details, and release information.
-
-> **Note:** The original full dataset and trained model weights are intentionally kept outside this GitHub repository unless redistribution rights are confirmed.
