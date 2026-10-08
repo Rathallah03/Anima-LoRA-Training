@@ -23,7 +23,9 @@ lilith-character/
 │   ├── image + caption pairs
 │   └── (representative samples)
 └── results/
-    └── (generated outputs)
+    ├── lilith-result-default.png
+    ├── lilith-result-default 2.png
+    └── lilith-result-fantasy.png
 ```
 
 ## 🖼️ Dataset
@@ -44,9 +46,19 @@ The complete source dataset is **not included in this repository**. The reposito
 
 ## 🎨 Generated Results
 
-The `results/` directory is reserved for representative outputs generated with the trained LoRA.
+The following are representative outputs generated using the trained Lilith LoRA.
 
-These samples demonstrate the practical result of the training process and allow the training case study to be evaluated independently from the source dataset.
+### Default Outfit
+
+![Lilith Default 01](results/lilith-result-default.png)
+
+![Lilith Default 02](results/lilith-result-default%202.png)
+
+### Fantasy Outfit
+
+![Lilith Fantasy](results/lilith-result-fantasy.png)
+
+These samples demonstrate the practical result of the training process across different generated outputs and character appearances.
 
 ## 🔄 Training Flow
 
