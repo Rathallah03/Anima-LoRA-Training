@@ -124,3 +124,33 @@ Anima-LoRA-Training/
 ## Notes
 
 This repository contains the workflow/code, not the dataset or generated LoRA weights. Check the licenses and usage terms of the base model, dependencies, and training data before redistribution.
+
+## Troubleshooting
+
+Use this checklist when the training notebook fails during setup or execution.
+
+### Dataset validation errors
+
+- Confirm that each supported image has a matching `.txt` caption file.
+- Check that image and caption filenames match exactly, apart from their extensions.
+- Review empty captions, unsupported image formats, and unexpected files in the dataset directory.
+
+### Model or dependency errors
+
+- Verify that the Anima Base, Qwen text encoder, and Qwen Image VAE files exist at the paths expected by the notebook.
+- Re-run the notebook's dependency and training-module validation cells after changing the environment.
+- Check the full error traceback before reinstalling packages or changing versions.
+
+### GPU memory or training failures
+
+- Confirm that the expected GPUs are available in the Kaggle session.
+- Review the configured resolution, batch size, network dimension, and gradient checkpointing settings.
+- If memory is insufficient, reduce the batch size or adjust other training settings carefully, then rerun the relevant validation checks.
+
+### Before starting a new run
+
+- Run the notebook's final pre-flight validation.
+- Confirm that the dataset, model paths, and generated TOML configuration files are correct.
+- Verify that the output location has sufficient space and that the trained LoRA file is synchronized before temporary files are cleaned up.
+
+> Troubleshooting steps may vary with the Kaggle environment, dependency versions, and available GPU resources
